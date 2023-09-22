@@ -1,7 +1,26 @@
-#perfil_img{
+#perfilImg{
     width: 40px;
     height: 40px;
 }
 .bi{
     color: #548AD8;
+}
+.icon{
+    width: 200px;
+}
+.incidencia{
+    width: 300px;
+    height: 220px;
+}
+.texto-incidencia{
+    position: relative;
+    bottom: 70px;
+    width: 252px;
+    height: 70px;
+    background-color: #548bd8a9;
+    font-family: 'Poppins';
+}
+#tituloIncidencia{
+    font-size: 45px;
+    font-family: 'Poppins';
 }
