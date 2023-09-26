@@ -1,0 +1,22 @@
+body{
+    background-color: black !important;
+}
+@font-face {
+    font-family: starJedi;
+    src: url(../fonts/Starjedi.ttf);
+}
+.sub-title, #titulo{
+    color: yellow;
+    font-family: starJedi;
+}
+#titulo{
+    font-size: 130px;
+    
+}
+.card-body, .modal-content{
+    background-color: rgb(33, 33, 33) !important;
+    color: white;
+}
+#searchBar{
+    background-color: rgb(0, 0, 0);
+}
