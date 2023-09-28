@@ -23,55 +23,27 @@ $(document).ready(() => {
         });
     });
 
-    $(document).on('click', '.personaje', () => {
+    $(document).on('click', '.personaje', function () {
         var personajeId = $(this).attr('itemid');
-        debugger;
+        var urlImg = 'https://starwars-visualguide.com/assets/img/characters/' + personajeId + '.jpg'
         $.ajax({
-            url: 'https://swapi.dev/api/people/' + personajeId,
+            url: `https://swapi.dev/api/people/${personajeId}`,
             type: 'GET'
         }).done(respuesta => {
-            var listadoPersonajes = respuesta.results;
-            var modalDetalle = `<div class="modal fade" id="detalle" tabindex="-1"
-            aria - labelledby="detalleModal" aria - hidden="true" >
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title fs-2" id="detalleModal">Characters
-                            Details</h5>
-                        <button type="button" class="btn-close bg-white"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-4 mx-auto d-block">
-                                <img src="https://starwars-visualguide.com/assets/img/characters/${personajeId}.jpg"
-                                    alt="personaje detalle star wars"
-                                    class="w-100">
-                            </div>
-                            <div class="col-8">
-                                <p class="fw-bold fs-2">${listadoPersonajes[personajeId].name}</p>
-                                <span class="fw-bold">Birthday:</span><span> ${listadoPersonajes[personajeId].birth_year}</span>
-                                <br>
-                                    <span class="fw-bold">Eye color:</span><span> ${listadoPersonajes[personajeId].eye_color}</span>
-                                    <br>
-                                        <span class="fw-bold">Hair color:</span><span> ${listadoPersonajes[personajeId].hair_color}</span>
-                                        <br>
-                                            <span class="fw-bold">Skin color:</span><span> ${listadoPersonajes[personajeId].skin_color}</span>
-                                            <br>
-                                                <span class="fw-bold">Mass:</span><span> ${listadoPersonajes[personajeId].mass}kg</span>
-                                                <br>
-                                                    <span class="fw-bold">Height:</span><span> ${listadoPersonajes[personajeId].height}cm</span>
-                                                    <br>
-                                                        <span class="fw-bold">Gender:</span><span> ${listadoPersonajes[personajeId].gender}</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                            </div>`
-            $(modalDetalle).show();
+            $('#name').text(respuesta.name);
+            $('#birthday').text(respuesta.birth_day);
+            $('#haircolor').text(respuesta.hair_color);
+            $('#skincolor').text(respuesta.skin_color);
+            $('#mass').text(respuesta.mass);
+            $('#height').text(respuesta.height);
+            $('#gender').text(respuesta.gender);
+
+            $('.modalDetalle').modal('show');
         });
     });
+
+    function getIdPersonaje(url) {
+        url.split('/').reverse()[1];
+    }
 
 });
